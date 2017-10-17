@@ -2,8 +2,19 @@
 using UnityEngine.SceneManagement;
 using Common;
 
-public class Title : MonoBehaviour {
-    public void OnPushStart() {
-        SceneManager.LoadScene(Defines.SceneNameActionStart);
+namespace Title {
+
+    public class Title : MonoBehaviour {
+
+        [SerializeField]
+        private uGUI.UIClick ClickEvent;
+
+        private void Start() {
+            if (ClickEvent != null) {
+                ClickEvent.OnClickEvent = (eventData) => {
+                    SceneManager.LoadScene(Defines.SceneNameActionStart);
+                };
+            }
+        }
     }
 }
